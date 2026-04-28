@@ -1,0 +1,31 @@
+const languageScreen = document.getElementById("languageScreen")
+const currentLang = document.getElementById("currentLang")
+
+function setLanguage(lang){
+  document.documentElement.lang = lang
+  document.querySelectorAll("[data-ru]").forEach(el=>{
+    el.innerHTML = el.dataset[lang]
+  })
+  localStorage.setItem("kfcFinalLang", lang)
+  currentLang.textContent = lang.toUpperCase()
+  languageScreen.classList.add("hide")
+}
+
+function openLanguage(){
+  languageScreen.classList.remove("hide")
+}
+
+const savedLang = localStorage.getItem("kfcFinalLang")
+if(savedLang){
+  setLanguage(savedLang)
+}
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("active")
+    }
+  })
+},{threshold:.15})
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el))
