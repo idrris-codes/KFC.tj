@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KFC Tajikistan — Final Landing</title>
+<meta name="description" content="KFC Tajikistan landing page with menu, delivery, restaurants and Instagram links.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#ed001f;--red2:#ff1938;--muted:#b8b8b8;--line:rgba(255,255,255,.13)}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:#030303;color:#fff;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(circle at 80% 20%,rgba(237,0,31,.42),transparent 30%),radial-gradient(circle at 10% 10%,rgba(237,0,31,.25),transparent 28%),linear-gradient(120deg,#030303,#090909 55%,#150307)}
+body:after{content:"";position:fixed;inset:0;z-index:-2;opacity:.07;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+img{display:block;width:100%}
+
+.lang-screen{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 30%,rgba(237,0,31,.45),transparent 35%),#050505;transition:.6s}
+.lang-screen.hide{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.04)}
+.lang-card{position:relative;width:min(620px,100%);padding:54px 34px;text-align:center;border-radius:34px;background:rgba(255,255,255,.075);border:1px solid var(--line);backdrop-filter:blur(20px);box-shadow:0 40px 120px rgba(0,0,0,.55);overflow:hidden}
+.lang-card:before{content:"";position:absolute;top:0;left:34px;height:90px;width:102px;background:repeating-linear-gradient(90deg,var(--red) 0 22px,transparent 22px 34px)}
+.logo-chip{width:88px;height:88px;margin:0 auto 20px;display:grid;place-items:center;border-radius:22px;background:#fff;color:var(--red);font-weight:1000;font-size:30px;box-shadow:0 25px 70px rgba(237,0,31,.35);transform:rotate(-4deg)}
+.red-label{color:var(--red2);font-weight:1000;text-transform:uppercase;letter-spacing:2px;font-size:13px}
+.lang-card h1{font-size:clamp(42px,7vw,74px);line-height:.9;letter-spacing:-4px;margin:14px 0 18px}
+.lang-card p{max-width:490px;margin:0 auto 28px;color:var(--muted);line-height:1.75}
+.lang-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.lang-actions button{border:0;border-radius:999px;padding:16px 30px;font-weight:1000;cursor:pointer;color:#fff;background:var(--red);transition:.3s}
+.lang-actions button:last-child{background:rgba(255,255,255,.08);border:1px solid var(--line)}
+.lang-actions button:hover{transform:translateY(-4px)}
+
+.header{position:fixed;top:0;left:0;width:100%;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 7%;background:linear-gradient(180deg,rgba(0,0,0,.92),rgba(0,0,0,.12));backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:24px}
+.stripes{display:flex;gap:10px;height:66px}
+.stripes span{display:block;width:22px;background:var(--red)}
+.brand strong{font-size:34px;font-weight:1000;font-style:italic;letter-spacing:-2px}
+.nav{display:flex;gap:30px}
+.nav a{font-size:16px;font-weight:800;color:#f1f1f1;transition:.3s}
+.nav a:hover{color:var(--red2)}
+.header-actions{display:flex;align-items:center;gap:12px}
+.lang-btn{padding:13px 18px;border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.055);color:#fff;font-size:16px;font-weight:900;cursor:pointer;transition:.3s}
+.lang-btn:hover{background:var(--red);transform:translateY(-3px)}
+.order-top{padding:14px 22px;border-radius:18px;background:var(--red);font-weight:1000;box-shadow:0 18px 50px rgba(237,0,31,.28);transition:.3s}
+.order-top:hover{background:var(--red2);transform:translateY(-3px)}
+
+.hero{min-height:100vh;position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:36px;padding:135px 7% 42px;overflow:hidden}
+.hero-word{position:absolute;right:3%;bottom:4%;font-family:Oswald,sans-serif;font-size:18vw;font-weight:700;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.06);z-index:-1}
+.line-label{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.line-label span{width:34px;height:2px;background:var(--red)}
+.line-label p{color:var(--red2);font-weight:1000;font-size:18px}
+.hero h1{font-family:Oswald,Inter,sans-serif;font-size:clamp(58px,8vw,126px);line-height:.96;letter-spacing:-3px;text-transform:uppercase;margin-bottom:26px;text-shadow:0 10px 40px rgba(0,0,0,.55)}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero-text{font-size:20px;line-height:1.65;color:#f1f1f1;max-width:730px;margin-bottom:34px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.primary,.secondary{display:inline-flex;align-items:center;justify-content:center;border-radius:18px;font-weight:1000;transition:.35s}
+.primary{gap:17px;padding:22px 30px;background:linear-gradient(135deg,var(--red),var(--red2));font-size:20px;box-shadow:0 22px 70px rgba(237,0,31,.38)}
+.primary:hover{transform:translateY(-6px) scale(1.02)}
+.primary i{font-style:normal;font-size:42px;line-height:1}
+.primary.small{font-size:16px;padding:17px 24px;margin-top:28px}
+.secondary{padding:20px 26px;background:rgba(255,255,255,.07);border:1px solid var(--line)}
+.secondary:hover{background:#fff;color:#111;transform:translateY(-5px)}
+
+.hero-media{position:relative;height:620px;border-radius:42px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 50px 160px rgba(0,0,0,.7),0 0 80px rgba(237,0,31,.35);background:radial-gradient(circle at 50% 30%,rgba(237,0,31,.36),transparent 38%),#111}
+.hero-media img{height:100%;object-fit:cover;filter:saturate(1.22) contrast(1.08) brightness(.86);transition:1s}
+.hero-media:hover img{transform:scale(1.06)}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.84)),radial-gradient(circle at 70% 20%,rgba(237,0,31,.38),transparent 35%)}
+.media-badge{position:absolute;left:26px;right:26px;bottom:26px;padding:22px;border-radius:24px;background:rgba(0,0,0,.58);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(16px)}
+.media-badge strong{display:block;font-size:24px;margin-bottom:6px}
+.media-badge span{color:#ddd}
+.fallback{display:none;position:absolute;inset:0;place-items:center;background:radial-gradient(circle at 50% 30%,rgba(237,0,31,.35),transparent 35%),#111}
+.hero-media.bad img{display:none}
+.hero-media.bad .fallback{display:grid}
+.bucket{position:relative;width:360px;height:390px;display:grid;place-items:center}
+.bucket:before{content:"";position:absolute;bottom:20px;width:300px;height:300px;background:repeating-linear-gradient(90deg,#fff 0 65px,var(--red) 65px 108px);clip-path:polygon(8% 0,92% 0,78% 100%,22% 100%);border-radius:28px 28px 75px 75px}
+.bucket strong{position:relative;z-index:2;font-family:Oswald,sans-serif;font-size:80px;color:#111;font-style:italic}
+.bucket p{position:absolute;z-index:2;bottom:90px;color:#111;font-weight:1000}
+.chicken{position:absolute;top:16px;z-index:3;display:flex}
+.chicken span{width:98px;height:118px;border-radius:55%;background:radial-gradient(circle at 35% 30%,#ffc046,#c86613 55%,#7d3407);box-shadow:0 20px 55px rgba(0,0,0,.4);margin-left:-7px}
+
+.delivery{grid-column:1/3;display:flex;align-items:center;gap:36px;padding:34px 64px;border-radius:26px;border:1px solid rgba(237,0,31,.65);background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.035));box-shadow:0 20px 90px rgba(0,0,0,.38);backdrop-filter:blur(12px)}
+.phone{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;background:var(--red);font-size:48px;box-shadow:0 0 55px rgba(237,0,31,.55);animation:ring 2s ease-in-out infinite}
+.delivery p{font-size:20px;color:#f1f1f1;margin-bottom:12px;font-weight:800}
+.numbers{display:flex;align-items:center;gap:34px;flex-wrap:wrap}
+.numbers a{font-family:Oswald,Inter,sans-serif;font-size:clamp(38px,4.2vw,58px);font-weight:700;letter-spacing:-1px}
+.numbers span{width:2px;height:54px;background:rgba(255,255,255,.28)}
+
+.actions{grid-column:1/3;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px}
+.action{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;padding:22px;border-radius:24px;background:rgba(255,255,255,.06);border:1px solid var(--line);transition:.35s}
+.action:hover{transform:translateY(-8px);background:rgba(237,0,31,.16);border-color:rgba(237,0,31,.55)}
+.action i{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;background:rgba(237,0,31,.18);color:var(--red2);font-style:normal;font-size:28px}
+.action h3{font-size:18px;margin-bottom:5px}
+.action p{color:var(--muted);font-size:14px;line-height:1.45}
+
+.section,.instagram,.final{padding:110px 7%}
+.section-head{max-width:920px;margin-bottom:46px}
+.section h2,.instagram h2,.final h2{font-size:clamp(40px,5vw,76px);line-height:.95;letter-spacing:-3px;margin:14px 0 18px}
+.section p,.instagram p,.final p{color:#d0d0d0;line-height:1.8;font-size:17px}
+
+.menu-show{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center}
+.menu-device{border-radius:34px;padding:28px;background:rgba(255,255,255,.07);border:1px solid var(--line);box-shadow:0 40px 120px rgba(0,0,0,.35)}
+.menu-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:22px}
+.menu-top span{color:var(--red2);font-size:12px;text-transform:uppercase;font-weight:1000;letter-spacing:2px}
+.menu-top h3{font-size:32px;margin-top:6px}
+.menu-top a{padding:12px 16px;border-radius:999px;background:var(--red);font-weight:1000}
+.cats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.cats span{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);font-weight:800;font-size:13px}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.products article{border-radius:24px;overflow:hidden;background:rgba(0,0,0,.32);border:1px solid var(--line)}
+.product-img{height:190px;background-size:cover;background-position:center;position:relative}
+.product-img:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.78))}
+.p1{background-image:url("https://www.kfc.tj/admin/files/4004.jpg")}
+.p2{background-image:url("https://www.kfc.tj/admin/files/4005.jpg")}
+.p3{background-image:url("https://www.kfc.tj/admin/files/4162.jpeg")}
+.products h4{font-size:18px;padding:16px 16px 6px}
+.products p{padding:0 16px 18px;color:var(--muted);line-height:1.5;font-size:13px}
+.menu-copy h3{font-size:clamp(30px,3.5vw,54px);line-height:1;margin:14px 0 18px;letter-spacing:-2px}
+
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.photo-card{border-radius:30px;overflow:hidden;background:rgba(255,255,255,.065);border:1px solid var(--line);transition:.45s;box-shadow:0 30px 90px rgba(0,0,0,.2)}
+.photo-card:hover{transform:translateY(-12px);box-shadow:0 32px 100px rgba(237,0,31,.22)}
+.photo{height:330px;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 35%,rgba(237,0,31,.32),transparent 38%),#111}
+.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.82))}
+.photo img{height:100%;object-fit:cover;filter:saturate(1.22) contrast(1.06);transition:.7s}
+.photo.bad img{display:none}
+.photo.bad:before{content:"KFC";position:absolute;inset:0;display:grid;place-items:center;font-family:Oswald,sans-serif;font-size:82px;color:#fff;z-index:1}
+.photo-card:hover .photo img{transform:scale(1.09)}
+.photo-content{padding:26px}
+.photo-content span{color:var(--red2);font-size:12px;text-transform:uppercase;letter-spacing:1.7px;font-weight:1000}
+.photo-content h3{font-size:26px;margin:12px 0 10px}
+.photo-content p{color:var(--muted);line-height:1.6;margin-bottom:18px}
+.photo-content a{font-weight:1000;border-bottom:2px solid var(--red);padding-bottom:5px}
+
+.instagram{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center;background:#090909}
+.insta-card{display:grid;grid-template-columns:190px 1fr;gap:28px;border-radius:38px;padding:34px;background:#101318;border:1px solid var(--line);box-shadow:0 40px 120px rgba(0,0,0,.4)}
+.insta-avatar{width:180px;height:180px;border-radius:50%;padding:7px;background:linear-gradient(135deg,#ffd600,#ff7a00,#ff0069,#d300c5)}
+.insta-avatar div{height:100%;border-radius:50%;background:#fff;color:var(--red);display:grid;place-items:center;font-size:50px;font-weight:1000;border:8px solid #0f1116}
+.insta-name{display:flex;align-items:center;gap:10px}
+.insta-name h3{font-size:32px;letter-spacing:-1px}
+.insta-name span{width:24px;height:24px;border-radius:50%;background:#149cff;display:grid;place-items:center;font-weight:1000;font-size:14px}
+.insta-title{font-size:18px;font-weight:900;margin:12px 0 18px}
+.insta-stats{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:22px}
+.insta-stats b{font-size:18px}
+.insta-stats span{font-weight:700;color:#dcdcdc}
+.insta-bio{font-size:18px;line-height:1.55;margin-bottom:16px}
+.insta-links{display:grid;gap:8px;margin-bottom:22px}
+.insta-links a{font-weight:900;color:#fff}
+.insta-buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.insta-buttons a{padding:14px 16px;border-radius:14px;background:#485bff;font-weight:1000;text-align:center}
+.insta-buttons a:last-child{background:#252a31}
+
+.final-box{text-align:center;border-radius:42px;padding:72px;background:linear-gradient(135deg,rgba(237,0,31,.84),rgba(0,0,0,.86));border:1px solid var(--line);box-shadow:0 40px 130px rgba(237,0,31,.22)}
+.final-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:26px}
+.final-links a{padding:15px 22px;border-radius:999px;background:#fff;color:#111;font-weight:1000;transition:.3s}
+.final-links a:hover{background:var(--red);color:#fff;transform:translateY(-4px)}
+
+footer{padding:34px 7%;display:grid;grid-template-columns:1fr auto;gap:18px;border-top:1px solid var(--line);color:var(--muted)}
+.footer-links{display:flex;gap:18px;justify-content:flex-end;flex-wrap:wrap}
+.footer-links a{color:#fff;font-weight:900}
+.copyright{grid-column:1/3;text-align:center;color:#888;font-size:13px}
+.developer{grid-column:1/3;text-align:center;padding-top:18px;border-top:1px solid var(--line);font-weight:900}
+.developer span{color:var(--muted)}
+.developer a{color:#fff}
+.developer a:hover{color:var(--red2)}
+
+.reveal{opacity:0;transform:translateY(36px) scale(.98);transition:1s cubic-bezier(.22,1,.36,1)}
+.reveal.active{opacity:1;transform:translateY(0) scale(1)}
+@keyframes ring{0%,100%{box-shadow:0 0 35px rgba(237,0,31,.45)}50%{box-shadow:0 0 75px rgba(237,0,31,.75)}}
+
+@media(max-width:1100px){.nav{display:none}.hero,.menu-show,.instagram{grid-template-columns:1fr}.hero-media{height:560px}.delivery,.actions{grid-column:1}.actions{grid-template-columns:1fr 1fr}.photo-grid{grid-template-columns:1fr 1fr}.insta-card{grid-template-columns:150px 1fr}.insta-avatar{width:150px;height:150px}.products{grid-template-columns:1fr}}
+@media(max-width:700px){.header{padding:16px 5%}.stripes{height:52px;gap:8px}.stripes span{width:18px}.brand{gap:16px}.brand strong{font-size:28px}.order-top{display:none}.lang-btn{padding:10px 13px;border-radius:15px}.hero{padding:115px 5% 36px}.hero h1{letter-spacing:-1.5px}.hero-text{font-size:17px}.hero-media{height:430px;border-radius:30px}.delivery{padding:24px;gap:18px;align-items:flex-start}.phone{width:66px;height:66px;font-size:34px;flex:none}.numbers{gap:14px}.numbers span{display:none}.numbers a{font-size:38px}.actions,.photo-grid{grid-template-columns:1fr}.section,.instagram,.final{padding:80px 5%}.photo{height:300px}.final-box{padding:48px 22px;border-radius:30px}.insta-card{grid-template-columns:1fr;text-align:left;padding:24px}.insta-avatar{width:120px;height:120px}.insta-avatar div{font-size:34px}.insta-name h3{font-size:25px}.insta-buttons{grid-template-columns:1fr}footer{grid-template-columns:1fr;text-align:center}.footer-links{justify-content:center}.developer,.copyright{grid-column:auto}}
+</style>
+</head>
+<body>
+
+<div class="lang-screen" id="langScreen">
+  <div class="lang-card">
+    <div class="logo-chip">KFC</div>
+    <p class="red-label">KFC Tajikistan</p>
+    <h1>Choose language</h1>
+    <p data-ru="Выберите язык сайта и продолжайте к меню, доставке и ресторанам KFC Tajikistan." data-en="Choose the website language and continue to KFC Tajikistan menu, delivery and restaurants.">Выберите язык сайта и продолжайте к меню, доставке и ресторанам KFC Tajikistan.</p>
+    <div class="lang-actions">
+      <button type="button" onclick="setLanguage('ru')">Русский</button>
+      <button type="button" onclick="setLanguage('en')">English</button>
+    </div>
+  </div>
+</div>
+
+<header class="header">
+  <a class="brand" href="#home">
+    <div class="stripes"><span></span><span></span><span></span></div>
+    <strong>KFC</strong>
+  </a>
+  <nav class="nav">
+    <a href="#menu" data-ru="Меню" data-en="Menu">Меню</a>
+    <a href="#delivery" data-ru="Доставка" data-en="Delivery">Доставка</a>
+    <a href="#restaurants" data-ru="Рестораны" data-en="Restaurants">Рестораны</a>
+    <a href="#instagram">Instagram</a>
+  </nav>
+  <div class="header-actions">
+    <button type="button" class="lang-btn" onclick="openLanguage()">🌐 <span id="currentLang">RU</span></button>
+    <a class="order-top" href="https://www.kfc.tj/menu" target="_blank" rel="noopener" data-ru="Заказать" data-en="Order">Заказать</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-word">KFC</div>
+
+    <div class="hero-content reveal">
+      <div class="line-label"><span></span><p data-ru="KFC ТАДЖИКИСТАН" data-en="KFC TAJIKISTAN">KFC ТАДЖИКИСТАН</p><span></span></div>
+      <h1 data-ru="ВКУС, КОТОРЫЙ<br><em>ЗНАЕТ ВЕСЬ МИР</em>" data-en="THE TASTE<br><em>THE WORLD KNOWS</em>">ВКУС, КОТОРЫЙ<br><em>ЗНАЕТ ВЕСЬ МИР</em></h1>
+      <p class="hero-text" data-ru="Оригинальная курица KFC по рецепту Полковника Сандерса, горячие бургеры, хрустящие крылышки и любимые комбо. Выбирайте блюда в официальном меню и заказывайте доставку по номеру 1400 или 1212." data-en="Original KFC chicken inspired by Colonel Sanders’ recipe, hot burgers, crispy wings and favorite combos. Choose your meals from the official menu and order delivery by calling 1400 or 1212.">Оригинальная курица KFC по рецепту Полковника Сандерса, горячие бургеры, хрустящие крылышки и любимые комбо. Выбирайте блюда в официальном меню и заказывайте доставку по номеру 1400 или 1212.</p>
+      <div class="hero-actions">
+        <a class="primary" href="https://www.kfc.tj/menu" target="_blank" rel="noopener"><span>🛵</span><b data-ru="Открыть меню" data-en="Open menu">Открыть меню</b><i>›</i></a>
+        <a class="secondary" href="tel:1400" data-ru="Заказать доставку" data-en="Order delivery">Заказать доставку</a>
+      </div>
+    </div>
+
+    <div class="hero-media reveal">
+      <img src="https://www.kfc.tj/admin/files/4004.jpg" alt="KFC Tajikistan restaurant" data-fallback>
+      <div class="fallback"><div class="bucket"><div class="chicken"><span></span><span></span><span></span></div><strong>KFC</strong><p>TAJIKISTAN</p></div></div>
+      <div class="shade"></div>
+      <div class="media-badge"><strong data-ru="Горячий KFC рядом с вами" data-en="Hot KFC near you">Горячий KFC рядом с вами</strong><span>Доставка: 1400 / 1212 · Меню: kfc.tj</span></div>
+    </div>
+
+    <div class="delivery reveal" id="delivery">
+      <a class="phone" href="tel:1400">☎</a>
+      <div><p data-ru="Быстрая доставка KFC" data-en="Fast KFC delivery">Быстрая доставка KFC</p><div class="numbers"><a href="tel:1400">1400</a><span></span><a href="tel:1212">1212</a></div></div>
+    </div>
+
+    <div class="actions reveal">
+      <a class="action" href="https://www.kfc.tj/menu" target="_blank" rel="noopener"><i>🍗</i><div><h3 data-ru="Меню KFC" data-en="KFC menu">Меню KFC</h3><p data-ru="Выберите любимые блюда из полного ассортимента" data-en="Choose your favorites from the full assortment">Выберите любимые блюда из полного ассортимента</p></div></a>
+      <a class="action" href="tel:1400"><i>☎</i><div><h3 data-ru="Доставка" data-en="Delivery">Доставка</h3><p data-ru="Оформите заказ за пару минут" data-en="Place your order in a couple of minutes">Оформите заказ за пару минут</p></div></a>
+      <a class="action" href="https://www.kfc.tj/stores" target="_blank" rel="noopener"><i>📍</i><div><h3 data-ru="Наши рестораны" data-en="Our restaurants">Наши рестораны</h3><p data-ru="Найдите ближайший KFC в вашем городе" data-en="Find the nearest KFC in your city">Найдите ближайший KFC в вашем городе</p></div></a>
+      <a class="action" href="https://www.instagram.com/kfcintajikistan/" target="_blank" rel="noopener"><i>◎</i><div><h3>Instagram</h3><p data-ru="Следите за акциями, новинками и открытиями" data-en="Follow deals, new items and openings">Следите за акциями, новинками и открытиями</p></div></a>
+    </div>
+  </section>
+
+  <section class="section" id="menu">
+    <div class="section-head reveal">
+      <p class="red-label" data-ru="Меню KFC" data-en="KFC menu">Меню KFC</p>
+      <h2 data-ru="Меню KFC Tajikistan" data-en="KFC Tajikistan Menu">Меню KFC Tajikistan</h2>
+      <p data-ru="Откройте полный ассортимент KFC: бургеры, крылышки, баскеты, боксы, картофель, напитки и фирменные комбо. Всегда горячий вкус и удобный заказ через официальное меню." data-en="Explore the full KFC assortment: burgers, wings, buckets, boxes, fries, drinks and signature combos. Hot taste and easy ordering through the official menu.">Откройте полный ассортимент KFC: бургеры, крылышки, баскеты, боксы, картофель, напитки и фирменные комбо. Всегда горячий вкус и удобный заказ через официальное меню.</p>
+    </div>
+
+    <div class="menu-show reveal">
+      <div class="menu-device">
+        <div class="menu-top"><div><span>KFC.tj</span><h3 data-ru="Официальное меню" data-en="Official menu">Официальное меню</h3></div><a href="https://www.kfc.tj/menu" target="_blank" rel="noopener">kfc.tj/menu</a></div>
+        <div class="cats"><span data-ru="Бургеры" data-en="Burgers">Бургеры</span><span data-ru="Твистеры" data-en="Twisters">Твистеры</span><span data-ru="Баскеты" data-en="Buckets">Баскеты</span><span data-ru="Боксы" data-en="Boxes">Боксы</span><span data-ru="Картофель" data-en="Fries">Картофель</span><span data-ru="Напитки" data-en="Drinks">Напитки</span></div>
+        <div class="products">
+          <article><div class="product-img p1"></div><h4>Chef Burger</h4><p data-ru="Сочная курица, мягкая булочка и фирменный соус KFC." data-en="Juicy chicken, soft bun and signature KFC sauce.">Сочная курица, мягкая булочка и фирменный соус KFC.</p></article>
+          <article><div class="product-img p2"></div><h4>Hot Wings</h4><p data-ru="Хрустящие крылышки для тех, кто любит яркий вкус." data-en="Crispy wings for those who love bold flavor.">Хрустящие крылышки для тех, кто любит яркий вкус.</p></article>
+          <article><div class="product-img p3"></div><h4>Combo Box</h4><p data-ru="Готовое комбо для быстрого и сытного обеда." data-en="A complete combo for a quick and filling lunch.">Готовое комбо для быстрого и сытного обеда.</p></article>
+        </div>
+      </div>
+      <div class="menu-copy">
+        <p class="red-label" data-ru="Выберите свой вкус" data-en="Choose your taste">Выберите свой вкус</p>
+        <h3 data-ru="Любимые блюда KFC — в одном меню." data-en="Your favorite KFC meals in one menu.">Любимые блюда KFC — в одном меню.</h3>
+        <p data-ru="Откройте меню, выберите блюдо, добавьте напиток или комбо и оформите заказ. Всё просто: любимый KFC уже ждёт вас." data-en="Open the menu, choose your meal, add a drink or combo and place your order. Simple: your favorite KFC is waiting for you.">Откройте меню, выберите блюдо, добавьте напиток или комбо и оформите заказ. Всё просто: любимый KFC уже ждёт вас.</p>
+        <a class="primary small" href="https://www.kfc.tj/menu" target="_blank" rel="noopener"><b data-ru="Открыть меню" data-en="Open menu">Открыть меню</b><i>›</i></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="restaurants">
+    <div class="section-head reveal">
+      <p class="red-label" data-ru="Рестораны KFC" data-en="KFC restaurants">Рестораны KFC</p>
+      <h2 data-ru="Рестораны KFC в Таджикистане" data-en="KFC restaurants in Tajikistan">Рестораны KFC в Таджикистане</h2>
+      <p data-ru="Посетите KFC рядом с вами. Уютная атмосфера, быстрый сервис и любимые блюда ждут вас в ресторанах KFC Tajikistan." data-en="Visit a KFC near you. A cozy atmosphere, fast service and your favorite meals are waiting for you at KFC Tajikistan restaurants.">Посетите KFC рядом с вами. Уютная атмосфера, быстрый сервис и любимые блюда ждут вас в ресторанах KFC Tajikistan.</p>
+    </div>
+    <div class="photo-grid">
+      <article class="photo-card reveal"><div class="photo"><img src="https://www.kfc.tj/admin/files/4004.jpg" alt="KFC restaurant" data-fallback></div><div class="photo-content"><span>KFC Tajikistan</span><h3 data-ru="Ресторан KFC" data-en="KFC restaurant">Ресторан KFC</h3><p data-ru="Зайдите за горячей курицей, любимыми бургерами и фирменными комбо." data-en="Come in for hot chicken, favorite burgers and signature combos.">Зайдите за горячей курицей, любимыми бургерами и фирменными комбо.</p><a href="https://www.kfc.tj/stores" target="_blank" rel="noopener" data-ru="Открыть рестораны" data-en="Open restaurants">Открыть рестораны</a></div></article>
+      <article class="photo-card reveal"><div class="photo"><img src="https://www.kfc.tj/admin/files/4005.jpg" alt="KFC interior" data-fallback></div><div class="photo-content"><span>KFC Tajikistan</span><h3 data-ru="Атмосфера KFC" data-en="KFC atmosphere">Атмосфера KFC</h3><p data-ru="Удобное место для быстрого обеда, встречи с друзьями или семейного заказа." data-en="A convenient place for a quick lunch, meeting friends or ordering with family.">Удобное место для быстрого обеда, встречи с друзьями или семейного заказа.</p><a href="https://www.kfc.tj/stores" target="_blank" rel="noopener" data-ru="Найти ресторан" data-en="Find restaurant">Найти ресторан</a></div></article>
+      <article class="photo-card reveal"><div class="photo"><img src="https://www.kfc.tj/admin/files/4162.jpeg" alt="KFC location" data-fallback></div><div class="photo-content"><span>KFC Tajikistan</span><h3 data-ru="KFC рядом" data-en="KFC nearby">KFC рядом</h3><p data-ru="Откройте список ресторанов и выберите ближайшую точку в вашем городе." data-en="Open the restaurant list and choose the nearest location in your city.">Откройте список ресторанов и выберите ближайшую точку в вашем городе.</p><a href="https://www.kfc.tj/stores" target="_blank" rel="noopener" data-ru="Открыть карту" data-en="Open map">Открыть карту</a></div></article>
+    </div>
+  </section>
+
+  <section class="instagram" id="instagram">
+    <div class="insta-copy reveal">
+      <p class="red-label">Instagram</p>
+      <h2 data-ru="Следите за новинками KFC" data-en="Follow KFC updates">Следите за новинками KFC</h2>
+      <p data-ru="Акции, новые блюда, открытия ресторанов и специальные предложения — всё в официальном Instagram KFC Tajikistan." data-en="Deals, new meals, restaurant openings and special offers — everything is available on the official KFC Tajikistan Instagram.">Акции, новые блюда, открытия ресторанов и специальные предложения — всё в официальном Instagram KFC Tajikistan.</p>
+      <a class="primary small" href="https://www.instagram.com/kfcintajikistan/" target="_blank" rel="noopener"><b data-ru="Открыть Instagram" data-en="Open Instagram">Открыть Instagram</b><i>›</i></a>
+    </div>
+    <div class="insta-card reveal">
+      <div class="insta-avatar"><div>KFC</div></div>
+      <div>
+        <div class="insta-name"><h3>kfcintajikistan</h3><span>✓</span></div>
+        <p class="insta-title">KFC ТАДЖИКИСТАН</p>
+        <div class="insta-stats"><b>489 <span data-ru="публикаций" data-en="posts">публикаций</span></b><b>103 тыс. <span data-ru="подписчиков" data-en="followers">подписчиков</span></b><b>4 <span data-ru="подписки" data-en="following">подписки</span></b></div>
+        <p class="insta-bio">🍗 Саҳифаи расмии KFC дар Тоҷикистон<br>❤️ Официальный аккаунт KFC в Таджикистане<br>🚚 Доставка: 1400 / 1212<br>↓↓ Сомонаи расмӣ ва меню</p>
+        <div class="insta-links"><a href="https://www.kfc.tj/menu" target="_blank" rel="noopener">🔗 www.kfc.tj</a><a href="https://www.instagram.com/kfcintajikistan/" target="_blank" rel="noopener">◎ kfcintajikistan</a></div>
+        <div class="insta-buttons"><a href="https://www.instagram.com/kfcintajikistan/" target="_blank" rel="noopener" data-ru="Открыть профиль" data-en="Open profile">Открыть профиль</a><a href="https://www.kfc.tj/menu" target="_blank" rel="noopener" data-ru="Меню KFC" data-en="KFC menu">Меню KFC</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="final-box reveal">
+      <p class="red-label">KFC Tajikistan</p>
+      <h2 data-ru="Закажите KFC прямо сейчас" data-en="Order KFC now">Закажите KFC прямо сейчас</h2>
+      <p data-ru="Выберите любимые блюда, оформите заказ онлайн или позвоните — горячий KFC уже в пути." data-en="Choose your favorite meals, order online or call us — hot KFC is already on the way.">Выберите любимые блюда, оформите заказ онлайн или позвоните — горячий KFC уже в пути.</p>
+      <div class="final-links"><a href="https://www.kfc.tj/menu" target="_blank" rel="noopener">Menu</a><a href="tel:1400">Call 1400</a><a href="tel:1212">Call 1212</a><a href="https://www.kfc.tj/stores" target="_blank" rel="noopener">Stores</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div>KFC Tajikistan</div>
+  <div class="footer-links"><a href="https://www.instagram.com/kfcintajikistan/" target="_blank" rel="noopener">Instagram KFC</a><a href="https://www.kfc.tj/menu" target="_blank" rel="noopener">Menu</a><a href="https://www.kfc.tj/stores" target="_blank" rel="noopener">Stores</a></div>
+  <div class="copyright">© KFC Tajikistan. Все права защищены.</div>
+  <div class="developer"><span data-ru="Разработчик:" data-en="Developer:">Разработчик:</span> <a href="https://www.instagram.com/idris.codes/" target="_blank" rel="noopener">Sharipov Idris · @idris.codes</a></div>
+</footer>
+
+<script>
+const langScreen=document.getElementById("langScreen");
+const currentLang=document.getElementById("currentLang");
+function setLanguage(lang){
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-ru]").forEach(el=>{el.innerHTML=el.dataset[lang]});
+  localStorage.setItem("kfcOfficialTextsLang",lang);
+  currentLang.textContent=lang.toUpperCase();
+  langScreen.classList.add("hide");
+}
+function openLanguage(){langScreen.classList.remove("hide")}
+const savedLang=localStorage.getItem("kfcOfficialTextsLang");
+if(savedLang){setLanguage(savedLang)}
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("active")}})},{threshold:.15});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+document.querySelectorAll("img[data-fallback]").forEach(img=>{
+  img.addEventListener("error",()=>{
+    const parent=img.closest(".hero-media,.photo");
+    if(parent){parent.classList.add("bad")}
+  })
+});
+document.addEventListener("mousemove",e=>{
+  if(innerWidth<900)return;
+  const media=document.querySelector(".hero-media");
+  if(!media)return;
+  const x=(e.clientX/innerWidth-.5)*10;
+  const y=(e.clientY/innerHeight-.5)*10;
+  media.style.transform=`translate(${x*.35}px,${y*.25}px)`;
+});
+</script>
+</body>
+</html>
